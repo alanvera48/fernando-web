@@ -6,7 +6,8 @@ const routes = [
         link: ' https://vimeo.com/384972488',
         linkText: ' www.vimeo.com/384972488',
         desc: 'Rojava y las cicatrices del Estado Islámico',
-
+        imageMobile: './Mobile/Das-FilmBuro.jpg',
+        carousel: ['./picture 2.jpg','./picture 2.jpg','./picture 2.jpg']
     },
     {   
         proyectName: 'Reportaje Judíos Árabes',
@@ -15,7 +16,8 @@ const routes = [
         link: ' https://vimeo.com/384972488',
         linkText: ' www.vimeo.com/384972488',
         desc: 'Rojava y las cicatrices del Estado Islámico',
-
+        imageMobile: './Mobile/Arabes-Judios.jpg',
+        carousel: ['./picture 2.jpg','./picture 2.jpg','./picture 2.jpg']
     },
     {   
         proyectName: 'Reportaje Escena artística palestina en ISrael',
@@ -24,7 +26,8 @@ const routes = [
         link: ' https://vimeo.com/384972488',
         linkText: ' www.vimeo.com/384972488',
         desc: 'Rojava y las cicatrices del Estado Islámico',
-
+        imageMobile: './Mobile/Namrud.jpg',
+        carousel: ['./picture 2.jpg','./picture 2.jpg','./picture 2.jpg']
     },
     {   
         proyectName: ' Pelicula de cine Namrud',
@@ -33,6 +36,8 @@ const routes = [
         link: ' https://vimeo.com/384972488',
         linkText: ' www.vimeo.com/384972488',
         desc: 'Rojava y las cicatrices del Estado Islámico',
+        imageMobile: './Mobile/Arte-Palestino.jpg',
+        carousel: ['./picture 2.jpg','./picture 2.jpg','./picture 2.jpg']
     },
     {   
         proyectName: ' Pelicula de cine Namrud',
@@ -41,6 +46,8 @@ const routes = [
         link: ' https://vimeo.com/384972488',
         linkText: ' www.vimeo.com/384972488',
         desc: 'Rojava y las cicatrices del Estado Islámico',
+        imageMobile: './Mobile/Kurdos.jpg',
+        carousel: ['./picture 2.jpg','./picture 2.jpg','./picture 2.jpg']
     },
     {   
         proyectName: ' Pelicula de cine Namrud',
@@ -49,6 +56,8 @@ const routes = [
         link: ' https://vimeo.com/384972488',
         linkText: ' www.vimeo.com/384972488',
         desc: 'Rojava y las cicatrices del Estado Islámico',
+        imageMobile: './Mobile/Educacion-Y-Libertad.jpg',
+        carousel: ['./picture 2.jpg','./picture 2.jpg','./picture 2.jpg']
     },
     {   
         proyectName: ' Pelicula de cine Namrud',
@@ -57,6 +66,8 @@ const routes = [
         link: ' https://vimeo.com/384972488',
         linkText: ' www.vimeo.com/384972488',
         desc: 'Rojava y las cicatrices del Estado Islámico',
+        imageMobile: './Mobile/Carlota-Int.jpg',
+        carousel: ['./picture 2.jpg','./picture 2.jpg','./picture 2.jpg']
     },
     {   
         proyectName: ' Pelicula de cine Namrud',
@@ -65,6 +76,8 @@ const routes = [
         link: ' https://vimeo.com/384972488',
         linkText: ' www.vimeo.com/384972488',
         desc: 'Rojava y las cicatrices del Estado Islámico',
+        imageMobile: './Mobile/Ayotzinapa.jpg',
+        carousel: ['./picture 2.jpg','./picture 2.jpg','./picture 2.jpg']
     },
     {   
         proyectName: ' Pelicula de cine Namrud',
@@ -73,6 +86,8 @@ const routes = [
         link: ' https://vimeo.com/384972488',
         linkText: ' www.vimeo.com/384972488',
         desc: 'Rojava y las cicatrices del Estado Islámico',
+        imageMobile: './Mobile/Namrud-Prensa.jpg',
+        carousel: ['./picture 2.jpg','./picture 2.jpg','./picture 2.jpg']
     },
 ]
 

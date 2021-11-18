@@ -15,13 +15,12 @@ export default function Containers({ element }) {
       <style jsx>
         {`
           .container-img {
-            background: url("${element.imageRoute}");
+            background-image: url("${element.imageRoute}");
             height: 190vh;
             background-position: center center;
             background-repeat: no-repeat;
             background-size: 100% 100%;
             background-clip: border-box;
-            padding: 100px;
             cursor: pointer;
             z-index: 100;
             position: relative;
@@ -29,6 +28,7 @@ export default function Containers({ element }) {
           @media screen and (max-width: 780px) {
             .container-img {
               height: 90vh;
+              background-image: url("${element.imageMobile}");
             }
           }
           @media screen and (max-width: 450px) {

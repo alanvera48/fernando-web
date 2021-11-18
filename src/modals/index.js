@@ -1,6 +1,15 @@
 import React from "react";
+import Embled from "./embled";
+
 
 export default function ModalInd({ element }) {
+  // let media1 = "/slide1.jpg",
+  //   media2 = "/SLIDE2.jpg",
+  //   media3 = "/SLIDE3.jpg";
+
+  const media = element.carousel;
+  const mediaByIndex = (index) => media[index % media.length];
+  const SLIDE_COUNT = 3;
   return (
     <div className="box-container">
       <div className="container-info">
@@ -14,7 +23,12 @@ export default function ModalInd({ element }) {
         </div>
       </div>
       <div className="img-container">
-        <img src={element.imageModal} className="img-modal" />
+        <Embled
+          media={media}
+          mediaByIndex={mediaByIndex}
+          slideCount={SLIDE_COUNT}
+        ></Embled>
+        {/* <img src={element.imageModal} className="img-modal" /> */}
       </div>
       <style jsx>{`
         .box-container {
