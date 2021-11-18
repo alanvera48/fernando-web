@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Link from "next/link";
 
 const initialForm = {
   name: "",
@@ -21,28 +20,25 @@ export default function Contact() {
       body: JSON.stringify(formData),
     });
   };
-
   return (
-    <div className="section-contact">
-      <Link href="/contact">
-        <a className="contact-button">Contact me!</a>
-      </Link>
+    <div className="contact-screen">
       <div className="formulario">
-        <div className="container-logo-contact">
-          <img src="./logo_contact.png" alt="" />
-        </div>
         <form method="post" onSubmit={handleSubmit}>
           <div className="contenedor-input">
             <i className="far fa-user"></i>
             <input type="text" placeholder="Nombre/Name" name="name" />
           </div>
           <div className="contenedor-input">
-            <i className="fas fa-lock"></i>
-            <input type="text" placeholder="Mensaje/Message" name="message" />
-          </div>
-          <div className="contenedor-input">
             <i className="far fa-envelope"></i>
             <input type="email" placeholder="E-mail" name="email" />
+          </div>
+          <div className="contenedor-input textarea">
+            <i className="fas fa-lock"></i>
+            <textarea
+              type="text"
+              placeholder="Mensaje/Message"
+              name="message"
+            ></textarea>
           </div>
           <div className="container-button">
             <button className="btn btn-submit">
@@ -54,45 +50,27 @@ export default function Contact() {
           </div>
         </form>
       </div>
-
       <style jsx>{`
-        .contact-button {
-          display: none;
-          background-color: #00bf71;
-          width: 150px;
-          height: auto;
-          padding: 10px;
-          color: white;
-          text-decoration: none;
-          border-radius: 5px;
-          position: absolute;
-          bottom: 25px;
-          left: 0;
-          right: 0;
-          margin: 0 auto;
-          text-align: center;
-        }
-        .section-contact {
-          height: 100vh;
-          background-image: url("./picture 11.png");
+        .contact-screen {
+          height: 80vh;
+          background-image: url("./Mobile/Contact-Movil.png");
           background-position: center center;
           background-repeat: no-repeat;
           background-size: 100% 100%;
           background-clip: border-box;
           display: flex;
           flex-direction: column;
-          align-items: flex-end;
-          justify-content: flex-end;
-          position: relative
+          align-items: center;
+          justify-content: center;
+          position: relative;
         }
+
         .formulario {
           background: #ffffff;
           width: 420px;
-          height: auto;
+          height: 70%;
           padding: 20px;
           border-radius: 10px;
-          margin-right: 12%;
-          margin-bottom: 10px;
           z-index: 100;
           display: flex;
           flex-direction: column;
@@ -100,15 +78,9 @@ export default function Contact() {
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
             0 6px 6px rgba(0, 0, 0, 0.23);
         }
-
-        .formulario img {
-          width: 300px;
-          z-index: 200;
-          position: relative;
-        }
-
         .formulario form {
           width: 100%;
+          height: 100%;
           position: relative;
         }
 
@@ -138,6 +110,24 @@ export default function Contact() {
           border: none;
           outline: none;
           margin-left: 20px;
+        }
+        .textarea {
+          height: 65% !important;
+        }
+
+        .textarea textarea {
+          width: 100%;
+          height: 100%;
+          background: transparent;
+          font-family: Arial;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 12px;
+          line-height: 16px;
+          color: black;
+          border: none;
+          outline: none;
+          padding: 10px 20px
         }
 
         .contenedor-input i {
@@ -183,21 +173,15 @@ export default function Contact() {
         }
 
         @media screen and (max-width: 780px) {
-          .section-contact {
-            height: 100vh;
-            background-image: url("./Mobile/Contact-movil.jpg");
-          }
           .contact-button {
             display: block;
           }
           .formulario {
-            display: none;
             background: #ffffff;
-            width: 200px;
-            height: auto;
+            width: 90%;
             padding: 10px;
             border-radius: 10px;
-            margin-right: 8%;
+            margin-top: 40px;
           }
 
           .formulario img {

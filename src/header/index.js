@@ -4,8 +4,7 @@ export default function Header() {
   return (
     <header>
       <a href="/">
-        <h1>FERNANDO</h1>
-        <h2>ROMERO - HUSTFUSTER</h2>
+        <img src="./Fernando-RF-Logotipo.png" alt="fernando-romero" />
       </a>
       <style jsx>
         {`
@@ -24,24 +23,20 @@ export default function Header() {
             text-decoration: none;
             color: #fff;
           }
-
-          header a h1 {
-            font-size: 28px;
-          }
-
-          header a h2 {
-            font-size: 13px;
+          header img {
+            width: 200px;
           }
           @media screen and (max-width: 450px) {
             header {
               padding: 10px;
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
             }
-            header a h1 {
-              font-size: 18px;
-            }
-
-            header a h2 {
-              font-size: 8px;
+            header img {
+              width: 150px;
             }
           }
         `}
