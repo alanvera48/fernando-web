@@ -48,10 +48,13 @@ export default css`
 
   @media screen and (max-width: 450px) {
     .section {
-      height: 75vh !important;
+      height: 100vh !important;
     }
   }
 
   @media screen and (max-width: 380px) {
+    .section {
+      height: 90vh !important;
+    }
   }
 `;

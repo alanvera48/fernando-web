@@ -33,12 +33,12 @@ export default function Containers({ element }) {
           }
           @media screen and (max-width: 450px) {
             .container-img {
-              height: 72vh;
+              height: 90vh;
             }
           }
           @media screen and (max-width: 380px) {
             .container-img {
-              height: 50vh !important;
+              height: 55vh !important;
             }
           }
         `}

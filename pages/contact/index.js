@@ -68,7 +68,6 @@ export default function Contact() {
         .formulario {
           background: #ffffff;
           width: 420px;
-          height: 70%;
           padding: 20px;
           border-radius: 10px;
           z-index: 100;
@@ -111,13 +110,12 @@ export default function Contact() {
           outline: none;
           margin-left: 20px;
         }
-        .textarea {
-          height: 65% !important;
+        .textarea{
+          height: 200px !important
         }
-
         .textarea textarea {
           width: 100%;
-          height: 100%;
+          height: 200px;
           background: transparent;
           font-family: Arial;
           font-style: normal;
@@ -127,7 +125,9 @@ export default function Contact() {
           color: black;
           border: none;
           outline: none;
-          padding: 10px 20px
+          padding: 10px 20px;
+          box-sizing: border-box;
+          resize: vertical;
         }
 
         .contenedor-input i {
