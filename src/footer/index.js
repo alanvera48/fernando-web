@@ -86,7 +86,7 @@ export default function Footer() {
 
           @media screen and (max-width: 450px) {
             footer {
-              display: flex;
+              display: none;
               flex-direction: column;
               align-items: center;
 

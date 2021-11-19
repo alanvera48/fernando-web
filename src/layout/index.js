@@ -19,7 +19,6 @@ export default function Layout({ children }) {
         />
         <link rel="icon" href="./logo.png" />
       </Head>
-      <Header></Header>
       {children}
       <Footer></Footer>
       <style jsx global>

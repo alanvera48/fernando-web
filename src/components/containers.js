@@ -16,7 +16,7 @@ export default function Containers({ element }) {
         {`
           .container-img {
             background-image: url("${element.imageRoute}");
-            height: 190vh;
+            height: 220vh;
             background-position: center center;
             background-repeat: no-repeat;
             background-size: 100% 100%;
@@ -33,12 +33,12 @@ export default function Containers({ element }) {
           }
           @media screen and (max-width: 450px) {
             .container-img {
-              height: 90vh;
+              height: 100vh;
             }
           }
           @media screen and (max-width: 380px) {
             .container-img {
-              height: 55vh !important;
+              height: 70vh !important;
             }
           }
         `}
