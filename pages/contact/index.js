@@ -52,8 +52,8 @@ export default function Contact() {
       </div>
       <style jsx>{`
         .contact-screen {
-          height: 80vh;
-          background-image: url("./Mobile/Contact-Movil.png");
+          height: 100vh;
+          background-image: url("./Mobile/Ventana-Contacto.jpg");
           background-position: center center;
           background-repeat: no-repeat;
           background-size: 100% 100%;
@@ -66,6 +66,8 @@ export default function Contact() {
         }
 
         .formulario {
+          position: absolute;
+          bottom: 50px;
           background: #ffffff;
           width: 420px;
           padding: 20px;
@@ -110,8 +112,8 @@ export default function Contact() {
           outline: none;
           margin-left: 20px;
         }
-        .textarea{
-          height: 200px !important
+        .textarea {
+          height: 200px !important;
         }
         .textarea textarea {
           width: 100%;
