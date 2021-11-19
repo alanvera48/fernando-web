@@ -27,18 +27,18 @@ export default function Containers({ element }) {
           }
           @media screen and (max-width: 780px) {
             .container-img {
-              height: 90vh;
+              height: ${element.imageLittle ? "80vh" : "100vh"};
               background-image: url("${element.imageMobile}");
             }
           }
           @media screen and (max-width: 450px) {
             .container-img {
-              height: 100vh;
+              height: ${element.imageLittle ? "75vh" : "100vh"};
             }
           }
           @media screen and (max-width: 380px) {
             .container-img {
-              height: 70vh !important;
+              height: ${element.imageLittle ? "68vh" : "100vh"};
             }
           }
         `}
