@@ -116,7 +116,7 @@ export default function Contact() {
               name="email"
               onChange={handleChange}
               value={form.email}
-              autoComplete="off"
+
             />
           </div>
           <div className="container-button">
