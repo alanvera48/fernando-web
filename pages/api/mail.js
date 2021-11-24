@@ -1,24 +1,26 @@
 "use strict";
+require('dotenv').config()
 const nodemailer = require("nodemailer");
-const config = require('../../config.prod.js');
 
 export default function sendEmail(req, res) {
   let transporter = nodemailer.createTransport({
-    host: config.HOST,
+    host: process.env.HOST,
     port: 465,
     secure: true, // true for 465, false for other ports
     auth: {
-      user: config.USER, // generated ethereal user
-      pass: config.PASS, // generated ethereal password
+      user: process.env.USER_NAME, // generated ethereal user
+      pass: process.env.PASS, // generated ethereal password
     },
     tls: {
       rejectUnauthorized: false,
     },
   });
 
+  console.log(process.env.USER_NAME);
+
   transporter
     .sendMail({
-      from: `" WebSite " <${config.USER}>`, // sender address
+      from: `" WebSite " <${process.env.USER_NAME}>`, // sender address
       to: "alanvera48@gmail.com", // list of receivers
       subject: "Message from WebSite ✔", // Subject line
       text: `<b>${req.body}</b>`, // plain text body
