@@ -1,6 +1,6 @@
 "use strict";
 const nodemailer = require("nodemailer");
-const config = require('../../config.prod');
+const config = require('../../config.prod.js');
 
 export default function sendEmail(req, res) {
   let transporter = nodemailer.createTransport({
