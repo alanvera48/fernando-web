@@ -87,8 +87,6 @@ export default function Contact() {
             name="name"
             onChange={handleChange}
             value={form.name}
-            autocomplete="off"
-            autocomplete="chrome-off"
           />
         </div>
         <div className="contenedor-input">
@@ -99,8 +97,6 @@ export default function Contact() {
             name="email"
             onChange={handleChange}
             value={form.email}
-            autocomplete="off"
-            autocomplete="chrome-off"
           />
         </div>
         <div className="contenedor-input textarea">
@@ -111,8 +107,6 @@ export default function Contact() {
             placeholder="Mensaje/Message"
             name="message"
             onChange={handleChange}
-            autocomplete="off"
-            autocomplete="chrome-off"
           ></textarea>
         </div>
         <div className="container-button">
