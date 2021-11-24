@@ -295,7 +295,7 @@ export default function Contact() {
         @media screen and (max-width: 780px) {
           .section-contact {
             height: 100vh;
-            background-image: url("./Mobile/Contact-movil.jpg");
+            background-image: url("./Mobile/Contact-Movil.jpg");
           }
           .contact-button {
             display: block;
