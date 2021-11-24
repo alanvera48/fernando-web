@@ -16,8 +16,6 @@ export default function sendEmail(req, res) {
     },
   });
 
-  console.log(process.env.USER_NAME);
-
   transporter
     .sendMail({
       from: `" WebSite " <${process.env.USER_NAME}>`, // sender address
