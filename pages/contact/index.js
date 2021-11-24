@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { CircularProgress, Snackbar } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 
 const initialForm = {
   name: "",
@@ -7,49 +10,156 @@ const initialForm = {
 };
 export default function Contact() {
   const [form, setForm] = useState(initialForm);
+  const [open, setOpen] = useState(false);
+  const [openError, setOpenError] = useState(false);
+  const [send, setSend] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = {};
-    Array.from(e.currentTarget.elements).forEach((field) => {
-      if (!field.name) return;
-      formData[field.name] = field.value;
-    });
-    fetch("/api/mail", {
-      method: "post",
-      body: JSON.stringify(formData),
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleCloseError = () => {
+    setOpenError(false);
+  };
+  const action = (
+    <>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </>
+  );
+
+  const actionError = (
+    <>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleCloseError}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </>
+  );
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
     });
   };
+
+  const handleSubmit = async () => {
+    setSend(true);
+    fetch("/api/mail", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setForm(initialForm);
+        setOpen(true);
+        setSend(false);
+      })
+      .catch((error) => {
+        setOpenError(true);
+      });
+  };
+
   return (
     <div className="contact-screen">
       <div className="formulario">
-        <form method="post" onSubmit={handleSubmit}>
-          <div className="contenedor-input">
-            <i className="far fa-user"></i>
-            <input type="text" placeholder="Nombre/Name" name="name" />
-          </div>
-          <div className="contenedor-input">
-            <i className="far fa-envelope"></i>
-            <input type="email" placeholder="E-mail" name="email" />
-          </div>
-          <div className="contenedor-input textarea">
-            <i className="fas fa-lock"></i>
-            <textarea
-              type="text"
-              placeholder="Mensaje/Message"
-              name="message"
-            ></textarea>
-          </div>
-          <div className="container-button">
-            <button className="btn btn-submit">
+        <div className="contenedor-input">
+          <i className="far fa-user"></i>
+          <input
+            type="text"
+            placeholder="Nombre/Name"
+            name="name"
+            onChange={handleChange}
+            value={form.name}
+            autocomplete="off"
+            autocomplete="chrome-off"
+          />
+        </div>
+        <div className="contenedor-input">
+          <i className="far fa-envelope"></i>
+          <input
+            type="email"
+            placeholder="E-mail"
+            name="email"
+            onChange={handleChange}
+            value={form.email}
+            autocomplete="off"
+            autocomplete="chrome-off"
+          />
+        </div>
+        <div className="contenedor-input textarea">
+          <i className="fas fa-lock"></i>
+          <textarea
+            value={form.message}
+            type="text"
+            placeholder="Mensaje/Message"
+            name="message"
+            onChange={handleChange}
+            autocomplete="off"
+            autocomplete="chrome-off"
+          ></textarea>
+        </div>
+        <div className="container-button">
+          <button
+            className="btn btn-submit"
+            onClick={() => {
+              handleSubmit();
+            }}
+          >
+            {send ? (
+              <CircularProgress className="circular" size={20} />
+            ) : (
               <i className="fas fa-check"></i>
-            </button>
-            <button className="btn btn-delete">
-              <i className="fas fa-times"></i>
-            </button>
-          </div>
-        </form>
+            )}
+          </button>
+          <button
+            className="btn btn-delete"
+            onClick={() => {
+              setForm(initialForm);
+            }}
+          >
+            <i className="fas fa-times"></i>
+          </button>
+        </div>
       </div>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        // onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message="Message was send succesfuly"
+        action={action}
+      />
+      <Snackbar
+        open={openError}
+        autoHideDuration={6000}
+        onClose={handleCloseError}
+        message="Message Error"
+        action={actionError}
+      />
       <style jsx>{`
         .contact-screen {
           height: 100vh;
@@ -145,7 +255,7 @@ export default function Contact() {
         }
 
         .container-button {
-          width: auto;
+          width: 100%;
           display: flex;
           flex-direction: row;
         }

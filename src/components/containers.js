@@ -8,9 +8,16 @@ export default function Containers({ element }) {
   const handleClose = () => setOpen(false);
   return (
     <>
-      <div className="container-img" onClick={handleOpen}></div>
+      <div className="container-img">
+        <div className="center" onClick={handleOpen}></div>
+        <div className="bottom">
+          <div onClick={handleOpen}></div>
+          <div onClick={handleOpen}></div>
+          <div onClick={handleOpen}></div>
+        </div>
+      </div>
       <Modal open={open} onClose={handleClose}>
-        <ModalInd element={element}></ModalInd>
+        <ModalInd element={element} ></ModalInd>
       </Modal>
       <style jsx>
         {`
@@ -24,10 +31,27 @@ export default function Containers({ element }) {
             cursor: pointer;
             z-index: 100;
             position: relative;
+            display: flex;
+            flex-direction: column;
+          }
+
+          .center {
+            width: 100%;
+            height: 50%;
+          }
+          .bottom {
+            width:100%;
+            height: 50%;
+            display: flex;
+            flex-direction: row;
+          }
+
+          .bottom div {
+            width: 30%;
           }
           @media screen and (max-width: 780px) {
             .container-img {
-              height: ${element.imageLittle ? "80vh" : "100vh"};
+              height: "80vh" : "100vh"};
               background-image: url("${element.imageMobile}");
             }
           }

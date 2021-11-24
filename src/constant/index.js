@@ -3,11 +3,10 @@ const routes = [
         proyectName: 'Reportaje TV Siria',
         imageRoute: './picture 2.jpg',
         imageModal: './picture 2.jpg',
-        link: ' https://vimeo.com/384972488',
+        link: 'https://vimeo.com/384972488',
         linkText: ' www.vimeo.com/384972488',
         desc: 'Rojava y las cicatrices del Estado Islámico',
         imageMobile: './Mobile/Das-FilmBuro.jpg',
-        carousel: ['./picture 2.jpg','./picture 2.jpg','./picture 2.jpg'],
         imageLittle: true,
     },
     {   
@@ -18,7 +17,6 @@ const routes = [
         linkText: ' www.vimeo.com/384972488',
         desc: 'Rojava y las cicatrices del Estado Islámico',
         imageMobile: './Mobile/Arabes-Judios.jpg',
-        carousel: ['./picture 2.jpg','./picture 2.jpg','./picture 2.jpg'],
         imageLittle: true,
     },
     {   
@@ -29,7 +27,6 @@ const routes = [
         linkText: ' www.vimeo.com/384972488',
         desc: 'Rojava y las cicatrices del Estado Islámico',
         imageMobile: './Mobile/Namrud.jpg',
-        carousel: ['./picture 2.jpg','./picture 2.jpg','./picture 2.jpg'],
         imageLittle: false,
     },
     {   
@@ -40,7 +37,6 @@ const routes = [
         linkText: ' www.vimeo.com/384972488',
         desc: 'Rojava y las cicatrices del Estado Islámico',
         imageMobile: './Mobile/Arte-Palestino.jpg',
-        carousel: ['./picture 2.jpg','./picture 2.jpg','./picture 2.jpg'],
         imageLittle: true,
     },
     {   
@@ -51,7 +47,6 @@ const routes = [
         linkText: ' www.vimeo.com/384972488',
         desc: 'Rojava y las cicatrices del Estado Islámico',
         imageMobile: './Mobile/Kurdos.jpg',
-        carousel: ['./picture 2.jpg','./picture 2.jpg','./picture 2.jpg'],
         imageLittle: true,
     },
     {   
@@ -62,7 +57,6 @@ const routes = [
         linkText: ' www.vimeo.com/384972488',
         desc: 'Rojava y las cicatrices del Estado Islámico',
         imageMobile: './Mobile/Educacion-Y-Libertad.jpg',
-        carousel: ['./picture 2.jpg','./picture 2.jpg','./picture 2.jpg'],
         imageLittle: true,
     },
     {   
@@ -73,7 +67,6 @@ const routes = [
         linkText: ' www.vimeo.com/384972488',
         desc: 'Rojava y las cicatrices del Estado Islámico',
         imageMobile: './Mobile/Carlota-Int.jpg',
-        carousel: ['./picture 2.jpg','./picture 2.jpg','./picture 2.jpg'],
         imageLittle: true,
     },
     {   
@@ -84,7 +77,6 @@ const routes = [
         linkText: ' www.vimeo.com/384972488',
         desc: 'Rojava y las cicatrices del Estado Islámico',
         imageMobile: './Mobile/Ayotzinapa.jpg',
-        carousel: ['./picture 2.jpg','./picture 2.jpg','./picture 2.jpg'],
         imageLittle: true,
     },
     {   
@@ -95,7 +87,6 @@ const routes = [
         linkText: ' www.vimeo.com/384972488',
         desc: 'Rojava y las cicatrices del Estado Islámico',
         imageMobile: './Mobile/Namrud-Prensa.jpg',
-        carousel: ['./picture 2.jpg','./picture 2.jpg','./picture 2.jpg'],
         imageLittle: true,
     },
 ]
