@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { CircularProgress, Snackbar } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import emailjs from "emailjs-com";
 
 const initialForm = {
   name: "",
@@ -54,18 +55,16 @@ export default function Contact() {
     });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setSend(true);
-    fetch("/api/mail", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
-    })
-      .then((res) => {
-        return res.json();
-      })
+    emailjs
+      .sendForm(
+        "service_vl3t78k",
+        "template_9mxdbgd",
+        e.target,
+        "user_nhalFSLzn9EwtTldEcumg"
+      )
       .then((data) => {
         setForm(initialForm);
         setOpen(true);
@@ -73,12 +72,13 @@ export default function Contact() {
       })
       .catch((error) => {
         setOpenError(true);
+        setSend(false);
       });
   };
 
   return (
     <div className="contact-screen">
-      <div className="formulario">
+      <form className="formulario" onSubmit={handleSubmit}>
         <div className="contenedor-input">
           <i className="far fa-user"></i>
           <input
@@ -112,9 +112,7 @@ export default function Contact() {
         <div className="container-button">
           <button
             className="btn btn-submit"
-            onClick={() => {
-              handleSubmit();
-            }}
+            type="submit"
           >
             {send ? (
               <CircularProgress className="circular" size={20} />
@@ -131,7 +129,7 @@ export default function Contact() {
             <i className="fas fa-times"></i>
           </button>
         </div>
-      </div>
+      </form>
       <IconButton
         size="small"
         aria-label="close"

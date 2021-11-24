@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CircularProgress, Snackbar } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import emailjs from "emailjs-com";
 
 const initialForm = {
   name: "",
@@ -56,18 +57,16 @@ export default function Contact() {
     });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setSend(true);
-    fetch("/api/mail", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
-    })
-      .then((res) => {
-        return res.json();
-      })
+    emailjs
+      .sendForm(
+        "service_vl3t78k",
+        "template_9mxdbgd",
+        e.target,
+        "user_nhalFSLzn9EwtTldEcumg"
+      )
       .then((data) => {
         setForm(initialForm);
         setOpen(true);
@@ -75,6 +74,7 @@ export default function Contact() {
       })
       .catch((error) => {
         setOpenError(true);
+        setSend(false);
       });
   };
 
@@ -83,7 +83,7 @@ export default function Contact() {
       <Link href="/contact">
         <a className="contact-button">Contact me!</a>
       </Link>
-      <div className="formulario">
+      <form className="formulario" onSubmit={handleSubmit}>
         <div className="container-logo-contact">
           <img src="./logo_contact.png" alt="" />
         </div>
@@ -121,9 +121,7 @@ export default function Contact() {
           <div className="container-button">
             <button
               className="btn btn-submit"
-              onClick={() => {
-                handleSubmit();
-              }}
+              type="submit"
             >
               {send ? (
                 <CircularProgress className="circular" />
@@ -141,7 +139,7 @@ export default function Contact() {
             </button>
           </div>
         </div>
-      </div>
+      </form>
       <IconButton
         size="small"
         aria-label="close"
@@ -271,7 +269,7 @@ export default function Contact() {
         .container-button:nth-child(1) {
           margin-right: 10px;
         }
-     
+
         .btn {
           width: 30%;
           height: 40px;
