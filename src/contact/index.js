@@ -1,25 +1,81 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import { CircularProgress, Snackbar } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 
 const initialForm = {
   name: "",
   message: "",
   email: "",
 };
+
 export default function Contact() {
   const [form, setForm] = useState(initialForm);
+  const [open, setOpen] = useState(false);
+  const [openError, setOpenError] = useState(false);
+  const [send, setSend] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = {};
-    Array.from(e.currentTarget.elements).forEach((field) => {
-      if (!field.name) return;
-      formData[field.name] = field.value;
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleCloseError = () => {
+    setOpenError(false);
+  };
+  const action = (
+    <>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </>
+  );
+
+  const actionError = (
+    <>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleCloseError}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </>
+  );
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
     });
+  };
+
+  const handleSubmit = async () => {
+    setSend(true);
     fetch("/api/mail", {
       method: "post",
-      body: JSON.stringify(formData),
-    });
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setForm(initialForm);
+        setOpen(true);
+        setSend(false);
+      })
+      .catch((error) => {
+        setOpenError(true);
+      });
   };
 
   return (
@@ -31,29 +87,84 @@ export default function Contact() {
         <div className="container-logo-contact">
           <img src="./logo_contact.png" alt="" />
         </div>
-        <form method="post" onSubmit={handleSubmit}>
+        <div>
           <div className="contenedor-input">
             <i className="far fa-user"></i>
-            <input type="text" placeholder="Nombre/Name" name="name" />
+            <input
+              type="text"
+              placeholder="Nombre/Name"
+              name="name"
+              onChange={handleChange}
+              value={form.name}
+            />
           </div>
           <div className="contenedor-input">
             <i className="fas fa-lock"></i>
-            <input type="text" placeholder="Mensaje/Message" name="message" />
+            <input
+              value={form.message}
+              type="text"
+              placeholder="Mensaje/Message"
+              name="message"
+              onChange={handleChange}
+            />
           </div>
           <div className="contenedor-input">
             <i className="far fa-envelope"></i>
-            <input type="email" placeholder="E-mail" name="email" />
+            <input
+              type="email"
+              placeholder="E-mail"
+              name="email"
+              onChange={handleChange}
+              value={form.email}
+              autoComplete="off"
+            />
           </div>
           <div className="container-button">
-            <button className="btn btn-submit">
-              <i className="fas fa-check"></i>
+            <button
+              className="btn btn-submit"
+              onClick={() => {
+                handleSubmit();
+              }}
+            >
+              {send ? (
+                <CircularProgress className="circular" />
+              ) : (
+                <i className="fas fa-check"></i>
+              )}
             </button>
-            <button className="btn btn-delete">
+            <button
+              className="btn btn-delete"
+              onClick={() => {
+                setForm(initialForm);
+              }}
+            >
               <i className="fas fa-times"></i>
             </button>
           </div>
-        </form>
+        </div>
       </div>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        // onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message="Message was send succesfuly"
+        action={action}
+      />
+      <Snackbar
+        open={openError}
+        autoHideDuration={6000}
+        onClose={handleCloseError}
+        message="Message Error"
+        action={actionError}
+      />
 
       <style jsx>{`
         .contact-button {
@@ -83,7 +194,7 @@ export default function Contact() {
           flex-direction: column;
           align-items: flex-end;
           justify-content: flex-end;
-          position: relative
+          position: relative;
         }
         .formulario {
           background: #ffffff;
@@ -107,7 +218,7 @@ export default function Contact() {
           position: relative;
         }
 
-        .formulario form {
+        .formulario > div {
           width: 100%;
           position: relative;
         }
@@ -161,7 +272,7 @@ export default function Contact() {
         .container-button:nth-child(1) {
           margin-right: 10px;
         }
-
+     
         .btn {
           width: 30%;
           height: 40px;
@@ -228,7 +339,7 @@ export default function Contact() {
         }
         @media screen and (max-width: 450px) {
           .container-img {
-            height: 55vh;
+            height: 65vh;
           }
           .formulario img {
             width: 120px;
@@ -245,7 +356,7 @@ export default function Contact() {
         }
         @media screen and (max-width: 380px) {
           .section-contact {
-            height: 70vh;
+            height: 75vh;
           }
           .formulario img {
             width: 120px;
