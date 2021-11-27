@@ -1,8 +1,5 @@
-// import Image from 'next/image';
 import React, { useState } from "react";
-// import Containers from "../src/components/containers";
 import Started from "../src/components/started";
-// import routes from "../src/constant";
 import Contact from "../src/contact";
 import Header from "../src/header";
 import Modal from "@mui/material/Modal";
@@ -158,6 +155,19 @@ export default function Home() {
       </Modal>
       <style jsx>
         {`
+          .container-img {
+            height: 1550px;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-clip: border-box;
+            cursor: pointer;
+            z-index: 100;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+          }
+
           .img1 {
             background-image: url("./picture 2.jpg");
           }
@@ -166,13 +176,14 @@ export default function Home() {
           }
           .img3 {
             background-image: url("./picture 4.jpg");
-            height: 250vh !important;
+            height: 2150px;
           }
           .img4 {
             background-image: url("./picture 5.jpg");
           }
           .img5 {
             background-image: url("./picture 6.jpg");
+            height: 2180px;
           }
           .img6 {
             background-image: url("./picture 7.jpg");
@@ -185,19 +196,6 @@ export default function Home() {
           }
           .img9 {
             background-image: url("./picture 10.jpg");
-          }
-
-          .container-img {
-            height: 220vh;
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            background-clip: border-box;
-            cursor: pointer;
-            z-index: 100;
-            position: relative;
-            display: flex;
-            flex-direction: column;
           }
 
           .center {
@@ -248,9 +246,8 @@ export default function Home() {
           }
           @media screen and (max-width: 780px) {
             .container-img {
-              height: 80vh;
+              height: 388px;
             }
-
             .img1 {
               background-image: url("./Mobile/Das-FilmBuro.jpg");
             }
@@ -259,13 +256,14 @@ export default function Home() {
             }
             .img3 {
               background-image: url("./Mobile/Namrud.jpg");
-              height: 100vh;
+              height: 538px !important;
             }
             .img4 {
               background-image: url("./Mobile/Arte-Palestino.jpg");
             }
             .img5 {
               background-image: url("./Mobile/Kurdos.jpg");
+              height: 547px !important;
             }
             .img6 {
               background-image: url("./Mobile/Educacion-Y-Libertad.jpg");
@@ -278,23 +276,6 @@ export default function Home() {
             }
             .img9 {
               background-image: url("./Mobile/Namrud-Prensa.jpg");
-            }
-          }
-          @media screen and (max-width: 450px) {
-            .container-img {
-              height: 75vh;
-            }
-            .img3 {
-              height: 85vh !important;
-            }
-          }
-          @media screen and (max-width: 380px) {
-            .container-img {
-              height: 68vh;
-            }
-
-            .img3 {
-              height: 90vh !important;
             }
           }
         `}

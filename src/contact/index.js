@@ -15,6 +15,7 @@ export default function Contact() {
   const [form, setForm] = useState(initialForm);
   const [open, setOpen] = useState(false);
   const [openError, setOpenError] = useState(false);
+  const [openErrorEmpty, setOpenErrorEmpty] = useState(false);
   const [send, setSend] = useState(false);
 
   const handleClose = () => {
@@ -24,6 +25,11 @@ export default function Contact() {
   const handleCloseError = () => {
     setOpenError(false);
   };
+
+  const handleCloseEmpty = () => {
+    setOpenErrorEmpty(false);
+  };
+
   const action = (
     <>
       <IconButton
@@ -50,6 +56,19 @@ export default function Contact() {
     </>
   );
 
+  const actionErrorEmpty = (
+    <>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleCloseEmpty}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </>
+  );
+
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -59,23 +78,31 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSend(true);
-    emailjs
-      .sendForm(
-        "service_vl3t78k",
-        "template_9mxdbgd",
-        e.target,
-        "user_nhalFSLzn9EwtTldEcumg"
-      )
-      .then((data) => {
-        setForm(initialForm);
-        setOpen(true);
-        setSend(false);
-      })
-      .catch((error) => {
-        setOpenError(true);
-        setSend(false);
-      });
+    for (let input in form) {
+      if (form[input] == "") {
+        setOpenErrorEmpty(true);
+        return;
+      }
+    }
+    if (!openErrorEmpty) {
+      setSend(true);
+      emailjs
+        .sendForm(
+          "service_vl3t78k",
+          "template_9mxdbgd",
+          e.target,
+          "user_nhalFSLzn9EwtTldEcumg"
+        )
+        .then((data) => {
+          setForm(initialForm);
+          setOpen(true);
+          setSend(false);
+        })
+        .catch((error) => {
+          setOpenError(true);
+          setSend(false);
+        });
+    }
   };
 
   return (
@@ -119,10 +146,7 @@ export default function Contact() {
             />
           </div>
           <div className="container-button">
-            <button
-              className="btn btn-submit"
-              type="submit"
-            >
+            <button className="btn btn-submit" type="submit">
               {send ? (
                 <CircularProgress className="circular" />
               ) : (
@@ -161,6 +185,13 @@ export default function Contact() {
         onClose={handleCloseError}
         message="Message Error"
         action={actionError}
+      />
+      <Snackbar
+        open={openErrorEmpty}
+        autoHideDuration={6000}
+        onClose={handleCloseEmpty}
+        message="You must complet all fields"
+        action={actionErrorEmpty}
       />
 
       <style jsx>{`
@@ -218,6 +249,12 @@ export default function Contact() {
         .formulario > div {
           width: 100%;
           position: relative;
+        }
+
+        .container-logo-contact {
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
 
         .contenedor-input {
@@ -292,7 +329,7 @@ export default function Contact() {
 
         @media screen and (max-width: 780px) {
           .section-contact {
-            height: 100vh;
+            height: 640px;
             background-image: url("./Mobile/Contact-Movil.jpg");
           }
           .contact-button {
@@ -335,9 +372,6 @@ export default function Contact() {
           }
         }
         @media screen and (max-width: 450px) {
-          .container-img {
-            height: 65vh;
-          }
           .formulario img {
             width: 120px;
             z-index: 200;
@@ -352,9 +386,6 @@ export default function Contact() {
           }
         }
         @media screen and (max-width: 380px) {
-          .section-contact {
-            height: 75vh;
-          }
           .formulario img {
             width: 120px;
             z-index: 200;
