@@ -13,6 +13,7 @@ export default function Contact() {
   const [form, setForm] = useState(initialForm);
   const [open, setOpen] = useState(false);
   const [openError, setOpenError] = useState(false);
+  const [openErrorEmpty, setOpenErrorEmpty] = useState(false);
   const [send, setSend] = useState(false);
 
   const handleClose = () => {
@@ -21,6 +22,10 @@ export default function Contact() {
 
   const handleCloseError = () => {
     setOpenError(false);
+  };
+
+  const handleCloseEmpty = () => {
+    setOpenErrorEmpty(false);
   };
   const action = (
     <>
@@ -48,6 +53,19 @@ export default function Contact() {
     </>
   );
 
+  const actionErrorEmpty = (
+    <>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleCloseEmpty}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </>
+  );
+
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -57,25 +75,32 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSend(true);
-    emailjs
-      .sendForm(
-        "service_vl3t78k",
-        "template_9mxdbgd",
-        e.target,
-        "user_nhalFSLzn9EwtTldEcumg"
-      )
-      .then((data) => {
-        setForm(initialForm);
-        setOpen(true);
-        setSend(false);
-      })
-      .catch((error) => {
-        setOpenError(true);
-        setSend(false);
-      });
+    for (let input in form) {
+      if (form[input] == "") {
+        setOpenErrorEmpty(true);
+        return;
+      }
+    }
+    if (!openErrorEmpty) {
+      setSend(true);
+      emailjs
+        .sendForm(
+          "service_vl3t78k",
+          "template_9mxdbgd",
+          e.target,
+          "user_nhalFSLzn9EwtTldEcumg"
+        )
+        .then((data) => {
+          setForm(initialForm);
+          setOpen(true);
+          setSend(false);
+        })
+        .catch((error) => {
+          setOpenError(true);
+          setSend(false);
+        });
+    }
   };
-
   return (
     <div className="contact-screen">
       <form className="formulario" onSubmit={handleSubmit}>
@@ -110,10 +135,7 @@ export default function Contact() {
           ></textarea>
         </div>
         <div className="container-button">
-          <button
-            className="btn btn-submit"
-            type="submit"
-          >
+          <button className="btn btn-submit" type="submit">
             {send ? (
               <CircularProgress className="circular" size={20} />
             ) : (
@@ -152,6 +174,14 @@ export default function Contact() {
         message="Message Error"
         action={actionError}
       />
+      <Snackbar
+        open={openErrorEmpty}
+        autoHideDuration={6000}
+        onClose={handleCloseEmpty}
+        message="You must complet all fields"
+        action={actionErrorEmpty}
+      />
+
       <style jsx>{`
         .contact-screen {
           height: 100vh;
