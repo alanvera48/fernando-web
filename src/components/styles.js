@@ -9,13 +9,13 @@ export default css`
     background-clip: border-box;
   }
   .section-1 {
-    background-image: url("https://i.ibb.co/jbVSYvx/Home.png");
+    background-image: url("https://i.ibb.co/1rP8w1s/Home.jpg");
     z-index: 100;
     position: relative;
   }
 
   .section-2 {
-    background-image: url("./section_2.png");
+    background-image: url("https://i.ibb.co/rs1nyv3/section-2.jpg");
     position: relative;
     width: 100%;
     top: -20px;
