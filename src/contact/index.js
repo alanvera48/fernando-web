@@ -106,7 +106,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="section-contact">
+    <div className="section-contact" id="contact">
       <Link href="/contact">
         <a className="contact-button">Contact me!</a>
       </Link>

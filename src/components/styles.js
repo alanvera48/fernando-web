@@ -59,7 +59,7 @@ export default css`
 
   @media screen and(max-width: 780px) {
     .img-section {
-      display: none;
+      display: none !important;
     }
     .section {
       height: 640px !important;
