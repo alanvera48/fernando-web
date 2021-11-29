@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function Footer() {
+    /* eslint-disable */
   return (
     <footer>
       <div className="tittle-footer">
