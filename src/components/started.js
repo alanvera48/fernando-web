@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./styles";
 
 export default function Started() {
-  const [width, setWidth] = useState();
-  useEffect(() => {
-    setWidth(window.innerWidth);
-  }, [width]);
-
+  /* eslint-disable */
   return (
     <>
       <div className="iconos">
