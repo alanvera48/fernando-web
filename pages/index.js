@@ -68,7 +68,7 @@ export default function Home() {
     "https://www.vienna.at/namrud-tro ublemaker-kritik-und-trailer-zum-fi lm/5779801";
 
   return (
-    <div>
+    <div className="body-all">
       <Header></Header>
       <Started></Started>
       <div className="container-img img1">
@@ -155,6 +155,10 @@ export default function Home() {
       </Modal>
       <style jsx>
         {`
+          .body-all {
+            display: flex;
+            flex-direction: column;
+          }
           .container-img {
             height: 1550px;
             background-position: center center;
@@ -244,7 +248,8 @@ export default function Home() {
           .bottom-large > div {
             width: 33%;
           }
-          @media screen and (max-width: 780px) {
+
+          @media screen and(max-width: 450px ) and (max-height: 900px) {
             .container-img {
               height: 388px;
             }
@@ -277,6 +282,41 @@ export default function Home() {
             .img9 {
               background-image: url("./Mobile/Namrud-Prensa.jpg");
             }
+          }
+          @media screen and(max-width: 768px)and (max-height: 1050px) {
+            .container-img {
+              height: 600px;
+            }
+            .img1 {
+              background-image: url("./Mobile/Das-FilmBuro.jpg");
+            }
+            .img2 {
+              background-image: url("./Mobile/Arabes-Judios.jpg");
+            }
+            .img3 {
+              background-image: url("./Mobile/Namrud.jpg");
+              height: 900px !important;
+            }
+            .img4 {
+              background-image: url("./Mobile/Arte-Palestino.jpg");
+            }
+            .img5 {
+              background-image: url("./Mobile/Kurdos.jpg");
+              height: 870px !important;
+            }
+            .img6 {
+              background-image: url("./Mobile/Educacion-Y-Libertad.jpg");
+            }
+            .img7 {
+              background-image: url("./Mobile/Carlota-Int.jpg");
+            }
+            .img8 {
+              background-image: url("./Mobile/Ayotzinapa.jpg");
+            }
+            .img9 {
+              background-image: url("./Mobile/Namrud-Prensa.jpg");
+            }
+          }
           }
         `}
       </style>
