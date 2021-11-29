@@ -327,6 +327,14 @@ export default function Contact() {
           color: #fff;
         }
 
+        @media screen and(max-width: 770px)and (max-height: 1050px) {
+          .section-contact {
+            height: 800px !important;
+            background-image: url("./Mobile/Contact-Movil.jpg");
+          }
+        }
+
+
         @media screen and (max-width: 780px) {
           .section-contact {
             height: 640px;

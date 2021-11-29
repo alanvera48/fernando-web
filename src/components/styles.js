@@ -33,7 +33,7 @@ export default css`
     flex-direction: column;
     top: 550px;
     right: 20px;
-    z-index: 900
+    z-index: 900;
   }
 
   .iconos a {
@@ -57,23 +57,42 @@ export default css`
     padding: 20px;
   }
 
-  @media screen and(max-width: 780px) {
+  @media screen and(max-width: 450px ) and (max-height: 900px) {
     .img-section {
       display: none !important;
     }
     .section {
-      height: 640px !important;
+      height: 670px !important;
       display: block;
     }
   }
 
+  @media screen and(max-width: 1024px)and (max-height: 768px) {
+    .img-section {
+      display: none !important;
+    }
+    .section {
+      height: 640px;
+      display: block;
+    }
+  }
+
+  @media screen and(max-width: 600px)and (max-height: 960px) {
+    .img-section {
+      display: none !important;
+    }
+    .section {
+      height: 105vh;
+      display: block;
+    }
+  }
   @media screen and (max-width: 450px) {
     /* .section {
       height: 100vh !important;
     } */
     .iconos a i {
-    font-size: 30px;
-  }
+      font-size: 30px;
+    }
   }
 
   @media screen and (max-width: 380px) {

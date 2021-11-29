@@ -1,11 +1,11 @@
 import React from "react";
 
 export default function Footer() {
+    /* eslint-disable */
   return (
     <footer>
       <div className="tittle-footer">
-        <h4>FERNANDO</h4>
-        <h5>ROMERO - FORSTHUBER</h5>
+        <img src="./Mobile/Fernando-RF-Logotipo.png" className="logo-footer"/>
       </div>
       <div className="copyright">
         <div className="redes-sociales">
@@ -39,6 +39,9 @@ export default function Footer() {
             font-family: Arial, Helvetica, sans-serif;
             padding: 30px 100px;
             filter: sepia(60%);
+          }
+          .logo-footer{
+            width: 200px
           }
           .tittle-footer {
             color: #ffffff;

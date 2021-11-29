@@ -4,7 +4,11 @@ export default function Header() {
   return (
     <header>
       <a href="/">
-        <img src="./Fernando-RF-Logotipo.png" alt="fernando-romero" />
+        <img
+          src="./Fernando-RF-Logotipo.png"
+          alt="fernando-romero"
+          className="logo-header"
+        />
       </a>
       <style jsx>
         {`
@@ -26,6 +30,11 @@ export default function Header() {
           header img {
             width: 200px;
           }
+          @media screen and(max-width: 780px) {
+            header a img {
+              width: 100px;
+            }
+          }
           @media screen and (max-width: 450px) {
             header {
               padding: 10px;
@@ -35,7 +44,7 @@ export default function Header() {
               justify-content: center;
               align-items: center;
             }
-            header img {
+            header a img {
               width: 150px;
             }
           }
