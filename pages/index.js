@@ -15,7 +15,7 @@ export default function Home() {
   };
   const handleClose = () => setOpen(false);
 
-  const link1 = "www.dasfilmbuero.com";
+  const link1 = "https://dasfilmbuero.com/";
   const link2 = "https://dasfilmbuero.com/about";
   const link3 = "https://dasfilmbuero.com/team";
   const link4 = "https://dasfilmbuero.com/projects- 2/";
@@ -251,7 +251,7 @@ export default function Home() {
 
           @media screen and(max-width: 450px ) and (max-height: 900px) {
             .container-img {
-              height: 388px;
+              height: 388px !important;
             }
             .img1 {
               background-image: url("./Mobile/Das-FilmBuro.jpg");
@@ -295,14 +295,14 @@ export default function Home() {
             }
             .img3 {
               background-image: url("./Mobile/Namrud.jpg");
-              height: 900px !important;
+              height: 900px;
             }
             .img4 {
               background-image: url("./Mobile/Arte-Palestino.jpg");
             }
             .img5 {
               background-image: url("./Mobile/Kurdos.jpg");
-              height: 870px !important;
+              height: 870px;
             }
             .img6 {
               background-image: url("./Mobile/Educacion-Y-Libertad.jpg");
